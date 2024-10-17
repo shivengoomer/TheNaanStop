@@ -1,5 +1,4 @@
 # Ignore everything
-*
 
 # Allow specific files or directories
 !.gitignore
