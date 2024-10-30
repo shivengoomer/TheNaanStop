@@ -5,6 +5,14 @@ const RecipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imageUr:{
+    type:String,
+    required:false,
+  },
+  categorie:{
+    type:String,
+    required:true,
+  },
   ingredients: {
     type: [String], // Array of strings to store ingredients
     required: true,

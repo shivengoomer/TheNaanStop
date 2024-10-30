@@ -1,64 +1,122 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { getRecipes } from './services/recipeServices'; // Adjust the path accordingly
-import './recipes.css'; // Import CSS for styling
+import './recipes.css';
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [expandedRecipe, setExpandedRecipe] = useState(null); // Track which recipe is expanded
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState(''); // Search term state
+  const [selectedCategory, setSelectedCategory] = useState(''); // Category filter state
 
   useEffect(() => {
     const fetchRecipes = async () => {
+      setIsLoading(true);
       try {
-        const data = await getRecipes();
-        setRecipes(data);
+        const response = await axios.get("http://localhost:3001/recipes");
+        setRecipes(response.data);
       } catch (error) {
         console.error('Error fetching recipes:', error);
-      } finally {
-        setLoading(false);
       }
+      setIsLoading(false);
     };
-
     fetchRecipes();
   }, []);
 
-  const handleCardClick = (recipeId) => {
-    setExpandedRecipe(expandedRecipe === recipeId ? null : recipeId); // Toggle expanded state
+  const openRecipeModal = (recipe) => {
+    setSelectedRecipe(recipe);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const closeRecipeModal = () => {
+    setSelectedRecipe(null);
+  };
+
+  // Filter recipes based on the search term and selected category
+  const filteredRecipes = recipes
+    .filter((recipe) =>
+      recipe.dishName.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((recipe) => selectedCategory === '' || recipe.categorie === selectedCategory);
 
   return (
     <div className="recipes-container">
-      <h1>Recipes</h1>
-      <div className="recipes-grid">
-        {recipes.map((recipe) => (
-          <div 
-            key={recipe._id} 
-            className="recipe-card" 
-            onClick={() => handleCardClick(recipe._id)}
-          >
-            <h2>{recipe.dishName}</h2>
-            {expandedRecipe === recipe._id && (
-              <div className="recipe-details">
-                <p>Author: {recipe.author}</p>
-                <p>Cooking Time: {recipe.cookingTime} minutes</p>
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                  {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
-                <p><strong>Instructions:</strong> {recipe.instructions}</p>
-                <p><strong>Servings:</strong> {recipe.servings}</p>
-                <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
-              </div>
-            )}
-          </div>
-        ))}
+      <h1 className="recipes-title">All Recipes</h1>
+
+      {/* Search bar */}
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search recipes..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
+
+      {/* Category filter buttons */}
+      <div className="category-buttons">
+        <button
+          className={selectedCategory === '' ? 'active' : ''}
+          onClick={() => setSelectedCategory('')}
+        >
+          <span>All</span>
+        </button>
+        <button
+          className={selectedCategory === 'Veg' ? 'active' : ''}
+          onClick={() => setSelectedCategory('Veg')}
+        >
+          <span>Veg</span>
+        </button>
+        <button
+          className={selectedCategory === 'Non-Veg' ? 'active' : ''}
+          onClick={() => setSelectedCategory('Non-Veg')}
+        >
+          <span>Non Veg</span>
+        </button>
+        <button
+          className={selectedCategory === 'Eggetarian' ? 'active' : ''}
+          onClick={() => setSelectedCategory('Eggetarian')}
+        >
+          <span>Eggetarian</span>
+        </button>
+      </div>
+
+      {isLoading ? (
+        <div className="loading-animation">
+          <div className="spinner">Loading...</div>
+        </div>
+      ) : (
+        <div className="recipes-list">
+          {filteredRecipes.map((recipe) => (
+            <div key={recipe._id} className="recipe-card" onClick={() => openRecipeModal(recipe)}>
+              <img src={recipe.imageUr || 'placeholder.jpg'} alt={recipe.dishName} className="recipe-image" />
+              <div className="recipe-content">
+                <h2 className="recipe-name">{recipe.dishName}</h2>
+                <p><strong>Category:</strong> {recipe.categorie}</p>
+                <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
+                <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
+                <p className="recipe-description">{recipe.instructions.slice(0, 100)}...</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {selectedRecipe && (
+        <div className="modal-overlay" onClick={closeRecipeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeRecipeModal}>&times;</button>
+            <h2>{selectedRecipe.dishName}</h2>
+            <img src={selectedRecipe.imageUr || 'placeholder.jpg'} alt={selectedRecipe.dishName} className="modal-image" />
+            <p><strong>Category:</strong> {selectedRecipe.categorie}</p>
+            <p><strong>Cooking Time:</strong> {selectedRecipe.cookingTime} minutes</p>
+            <p><strong>Servings:</strong> {selectedRecipe.servings}</p>
+            <p><strong>Difficulty:</strong> {selectedRecipe.difficulty}</p>
+            <p><strong>Ingredients:</strong> {selectedRecipe.ingredients.join(', ')}</p>
+            <p><strong>Instructions:</strong> {selectedRecipe.instructions}</p>
+            <p><strong>Author:</strong> {selectedRecipe.author}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

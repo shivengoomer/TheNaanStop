@@ -1,47 +1,260 @@
+/* General styles for the homepage */
 .homepage {
-    text-align: center;
-    padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Light gray background for the whole page */
+}
+
+/* Header styles */
+.homepage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8; /* Header background color */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Sections in the header */
+.left-section {
+  flex: 1;
+}
+
+.right-section {
+  flex: 1;
+  text-align: right;
+}
+
+/* Navigation bar styles */
+.navbar {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #007bff; /* Bootstrap primary color */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.nav-link:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #007bff; /* Bootstrap primary color */
+  cursor: pointer;
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.nav-button:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Call to action button */
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.cta-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Content alignment */
+/* Welcome Text Section */
+.welcome-text {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  padding: 20px; /* Add padding around the section */
+  margin: 20px 0; /* Margin above and below the section */
+}
+
+/* Left Section for Animation */
+.left-section-opening {
+  flex: 1; /* Take up equal space */
+  display: flex; /* Flexbox to center animation */
+  justify-content: center; /* Center animation horizontally */
+}
+
+/* Right Section for Text */
+/* Right Section for Text */
+/* Right Section for Text */
+.right-section-opening {
+  flex: 1; /* Take up equal space */
+  text-align: left; /* Align text to the left */
+  padding-left: 20px; /* Space between animation and text */
+  color: #333; /* Default text color */
+}
+
+/* Unfold Text Effect */
+/* Terminal Text Effect */
+.terminal-text {
+  font-family: 'Courier New', Courier, monospace; /* Monospace font for terminal effect */
+  color: #33ff00; /* Green text color typical of terminal */
+  border-right: 2px solid #33ff00; /* Cursor effect */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow */
+  animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite; /* Typing and cursor blink animation */
+}
+
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0; /* Start with no width */
   }
-  
-  .homepage-header {
-    background-color: #f8f9fa;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+  to {
+    width: 100%; /* End with full width */
   }
-  
-  .intro {
-    margin: 20px 0;
+}
+
+/* Cursor blink animation */
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; /* Invisible cursor */
   }
-  
-  .features {
-    margin: 20px 0;
+  50% {
+    border-color: #33ff00; /* Visible cursor */
   }
-  
-  .features ul {
-    list-style-type: none;
-    padding: 0;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .welcome-text {
+    flex-direction: column; /* Stack elements on smaller screens */
+    align-items: center; /* Center align elements */
   }
-  
-  .features li {
-    margin: 10px 0;
+
+  .left-section-opening {
+    margin-bottom: 20px; /* Space between animation and text on small screens */
   }
-  
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+
+  .right-section-opening {
+    padding-left: 0; /* Remove padding on small screens */
+    text-align: center; /* Center text on small screens */
   }
-  
-  .button:hover {
-    background-color: #0056b3;
+}
+
+/* Discover section */
+.discover {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 20px 0;
+  height: 300px;
+}
+
+/* Flexbox adjustments for the text and animation */
+.discover-text {
+  flex: 1;
+  margin-right: 20px; /* Space between text and animation */
+  padding-left: 20px;
+}
+
+.discover-animation {
+  flex: 1;
+  display: flex; /* Center animation vertically */
+  justify-content:center; /* Center animation horizontally */
+}
+
+/* Styles for card-like sections */
+.why,
+.featured-recipes,
+.categories,
+.popular-recipes,
+.newsletter {
+  padding: 20px;
+  background-color: #ffffff; /* White background for cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Card shadow */
+  margin: 20px 0;
+  border-radius: 8px; /* Rounded corners for cards */
+}
+
+/* Grid layout for categories and recipes */
+.category-grid,
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px; /* Space between grid items */
+}
+
+/* Input field styles */
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Subscribe button styles */
+.subscribe-button {
+  padding: 10px 20px;
+  background-color: #28a745; /* Bootstrap success color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.subscribe-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Footer styles */
+.homepage-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8; /* Footer background color */
+  margin-top: 40px; /* Space above footer */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .discover {
+    flex-direction: column; /* Stack layout on smaller screens */
   }
-  
-  .homepage-footer {
-    margin-top: 20px;
-    font-size: 14px;
+
+  .discover-text {
+    margin-right: 0; /* Remove right margin */
   }
-  
+
+  .right-section {
+    text-align: center; /* Center text in right section on small screens */
+  }
+
+  .nav-list {
+    flex-direction: column; /* Stack nav items vertically on smaller screens */
+    align-items: center; /* Center align nav items */
+  }
+
+  .nav-item {
+    margin: 10px 0; /* Adjust margin for stacked items */
+  }
+}
+.right-section-opening{
+  width: 500px;
+}
+.animation-two{
+  height: 250px;
+
+}
