@@ -382,14 +382,3 @@ main {
     margin-bottom: 20px;
   }
 }
-
-/* Large screens (900px and up) */
-@media (min-width: 901px) {
-  .dish-and-info {
-    flex-direction: row;
-  }
-
-  .dish-card {
-    width: 30%; /* Three cards per row */
-  }
-}
