@@ -40,5 +40,4 @@ client/.sass-cache/
 server/.sass-cache/
 
 # Production build files
-client/public/
 server/public/
