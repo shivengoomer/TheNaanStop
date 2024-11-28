@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './User.css'; // Import the CSS file for styling
 import { useNavigate} from 'react-router-dom';
+
 const User = () => {
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     password: '',
-    avatar: '',
   });
 
   const [message, setMessage] = useState('');
@@ -72,6 +72,7 @@ const User = () => {
   };
 
   return (
+    <div className='background'>
     <div className="user-container">
       <h1>{isRegister ? 'User Registration' : 'User Login'}</h1>
       <form onSubmit={isRegister ? handleRegister : handleLogin}>
@@ -101,15 +102,6 @@ const User = () => {
           onChange={handleChange}
           required
         />
-        {isRegister && (
-          <input
-            type="text"
-            name="avatar"
-            placeholder="Avatar URL"
-            value={userData.avatar}
-            onChange={handleChange}
-          />
-        )}
         <button type="submit">{isRegister ? 'Register' : 'Login'}</button>
       </form>
       {message && <p className="message">{message}</p>}
@@ -127,12 +119,14 @@ const User = () => {
             <li key={user._id}>
               <h3>{user.name} ({user.role})</h3>
               <p>Email: {user.email}</p>
-              {user.avatar && <img src={user.avatar} alt={`${user.name}'s avatar`} style={{ width: '50px', borderRadius: '50%' }} />}
               <p>Registered on: {new Date(user.date).toLocaleDateString()}</p>
             </li>
           ))}
         </ul>
       )}
+      
+      
+    </div>
     </div>
   );
 };

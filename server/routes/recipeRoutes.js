@@ -31,10 +31,12 @@ router.get('/:id', async (req, res) => {
 // @desc    Create a new recipe
 // @access  Public
 router.post('/', async (req, res) => {
-  const { dishName, ingredients, cookingTime, instructions, servings, difficulty, author } = req.body;
+  const { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author } = req.body;
 
   const recipe = new Recipe({
     dishName,
+    imageUr, // Include the image URL
+    categorie,
     ingredients,
     cookingTime,
     instructions,
@@ -56,11 +58,11 @@ router.post('/', async (req, res) => {
 // @access  Public
 router.put('/:id', async (req, res) => {
   try {
-    const { dishName, ingredients, cookingTime, instructions, servings, difficulty, author } = req.body;
+    const { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author } = req.body;
 
     const updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
-      { dishName, ingredients, cookingTime, instructions, servings, difficulty, author },
+      { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author }, // Include the image URL
       { new: true }
     );
 

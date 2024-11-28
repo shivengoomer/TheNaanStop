@@ -1,0 +1,173 @@
+.custom-background {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-size: cover;
+}
+
+
+.create-recipe-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-recipe-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #495057;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1em;
+    
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+    width: 95%; /* Make textarea responsive */
+    margin: 0; /* Reset margin for better alignment */
+    margin-bottom: 20px;
+  
+}
+
+button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button[type="button"] {
+    background-color: #6c757d;
+}
+
+button[type="button"]:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.ingredient-inputs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingredient-inputs input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.instruction-div {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+}
+
+@media (max-width: 768px) {
+    .create-recipe-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .ingredient-inputs {
+        flex-direction: column; /* Stack ingredient inputs vertically on small screens */
+    }
+}
+.cookingtime-div,
+.servings-div {
+    display: flex;
+    flex: 1;
+    margin-right: 30px;
+    align-items: center; /* Vertically centers items within the flex container */
+    margin-bottom: 15px; /* Adds some spacing between each section */
+}
+
+.divs-cont {
+    display: flex;
+    align-items: center; /* Vertically centers items within this container as well */
+}
+.cookingTime{
+    margin-left: 10px;
+    padding-left: 10px;
+}
+input[type="number"]{
+    margin-left: 15px;
+}
+.diff-input{
+    margin-left: 18px;
+    width: 180px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.lottie-background{
+    flex: 1;
+}
+.animation-2-recipe{
+    flex: 2;
+}

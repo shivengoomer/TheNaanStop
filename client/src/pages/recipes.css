@@ -1,8 +1,20 @@
+body{
+  scroll-behavior: smooth;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-image: url(images/Green\ and\ Light\ Yellow\ Illustrative\ Guess\ the\ Food\ Presentation.jpg);
+  background-attachment: fixed; /* Fixes the background in place */
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-position: center; 
+  width: 100%;
+}
+
 .recipes-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+ 
 }
 
 .recipes-title {
@@ -10,6 +22,7 @@
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
+
 }
 
 .recipes-list {
@@ -25,7 +38,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   width: 300px;
+  max-height: 380px; /* Set a maximum height for the recipe card */
   transition: transform 0.3s;
+  padding-bottom: 0px;
 }
 
 .recipe-card:hover {
@@ -33,13 +48,14 @@
 }
 
 .recipe-image {
-  width: 100%;
-  height: 200px;
+  width: 80%;          /* Adjusted to maintain proportions */
+  height: 200px;      /* Reduced height to prevent card overflow */
   object-fit: cover;
 }
 
 .recipe-content {
   padding: 15px;
+  
 }
 
 .recipe-name {
@@ -53,6 +69,7 @@
   font-size: 1rem;
   margin-top: 10px;
 }
+
 /* Modal overlay for darkening background */
 .modal-overlay {
   position: fixed;
@@ -75,6 +92,8 @@
   width: 80%;
   max-width: 600px;
   position: relative;
+  max-height: 90vh; /* Set a max-height for the modal */
+  overflow-y: auto; /* Allow scrolling if content exceeds max height */
 }
 
 .close-button {
@@ -99,13 +118,14 @@
   background: #ff3b3b;
 }
 
-
 .modal-image {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 15px;
+  width: 90%;              /* Full width of the modal content */
+  height: 400px;          /* Fixed height for the modal image */
+  border-radius: 5px;     /* Rounded corners */
+  margin-bottom: 15px;     /* Space below the image */
+  object-fit: cover;       /* Ensures the image fills the container */
 }
+
 .loading-animation {
   display: flex;
   justify-content: center;
@@ -126,11 +146,11 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 .search-bar {
   margin-bottom: 20px;
   width: 75%;
   margin: auto;
-  margin-bottom: 30px;
 }
 
 .search-bar input {
@@ -140,6 +160,7 @@
   border: 1px solid #ddd;
   font-size: 16px;
 }
+
 .category-buttons {
   margin: auto;
   width: 30%;
@@ -147,6 +168,7 @@
   justify-content: flex-end;
   padding-bottom: 20px;
 }
+
 .category-buttons button {
   background: transparent;
   position: relative;
@@ -172,4 +194,82 @@
   background-color: red;             /* Change button color to red */
   color: white;                      /* Change text color to white */
   border: 1px solid red;             /* Optional: Change border color */
+}
+input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+ }
+ 
+ .input::placeholder {
+  color: #9e9ea7;
+ }
+ 
+ .input:focus, input:hover {
+  outline: none;
+  border-color: rgba(254, 242, 7, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 10px rgb(240, 201, 45,0.5);
+ }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+  }
+
+  .recipe-card {
+    width: 100%; /* Allow card to be full width on smaller screens */
+  }
+
+  .recipe-image {
+    height: 150px; /* Adjust image height for better scaling on smaller screens */
+  }
+
+  .recipes-title {
+    font-size: 2rem; /* Slightly smaller title for smaller screens */
+  }
+
+  .recipe-name {
+    font-size: 1.3rem; /* Adjust recipe name size */
+  }
+
+  .recipe-description {
+    font-size: 0.9rem; /* Adjust recipe description size */
+  }
+
+  .search-bar {
+    width: 90%; /* Make search bar wider on smaller screens */
+  }
+
+  .category-buttons {
+    width: 100%; /* Full width for buttons on smaller screens */
+    justify-content: center; /* Center buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .recipes-title {
+    font-size: 1.5rem; /* Further reduce title size for mobile */
+  }
+
+  .recipe-name {
+    font-size: 1.1rem; /* Further reduce recipe name size */
+  }
+
+  .recipe-description {
+    font-size: 0.8rem; /* Further reduce recipe description size */
+  }
+
+  .modal-image {
+    height: 300px; /* Adjust modal image height for smaller screens */
+  }
 }

@@ -46,7 +46,7 @@ const Recipes = () => {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Search recipes..."
+          placeholder="🔍 Search recipes..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
