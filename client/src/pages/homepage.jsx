@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './homepage.css'; // CSS for styling
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import myLogo from "./images/logo_naanstop.png";
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 import homeDisplayimage from "./images/home-cover.png";
 const dish=
   [
