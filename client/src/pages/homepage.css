@@ -276,43 +276,120 @@ main {
 .dish-card:hover {
   transform: scale(1.05);
 }
-Responsive Design */
-@media screen and (max-width: 768px) {
+/* Base styles already provided above */
+
+/* Responsive Design */
+
+/* Mobile screens (up to 600px wide) */
+@media (max-width: 600px) {
   .homepage {
     flex-direction: column;
+    height: auto; /* Allow content to flow naturally */
   }
 
   .header {
     flex-direction: column;
-    align-items: flex-start;
+    text-align: center;
   }
 
-  .header-logo {
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 10px;
+  .header-logo h1 {
+    font-size: 40px; /* Adjust for smaller screens */
   }
 
   .navbar {
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
-    width: 100%;
-    justify-content: center;
   }
 
   .discover {
     flex-direction: column;
-    align-items: center;
+    padding: 10px;
   }
 
-  .discover-text,
-  .discover-animation {
-    width: 100%;
+  .discover-text {
+    max-width: 100%;
     text-align: center;
   }
 
-  .prev-dishes {
+  .dish-and-info {
     flex-direction: column;
-    gap: 10px;
+    width: 90%; /* Adjust width */
+    height: auto; /* Let height adjust naturally */
+    margin: 10px auto;
+  }
+
+  .img-cont {
+    width: 250px; /* Reduce size */
+    height: 250px;
+  }
+
+  .info h2 {
+    font-size: 24px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .info h3 {
+    font-size: 16px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .dish-card {
+    width: 100%; /* Use full width on smaller screens */
+    margin-bottom: 20px;
+  }
+
+  .dish-card img {
+    height: 150px; /* Reduce image height */
+  }
+}
+
+/* Tablet screens (601px to 900px wide) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .homepage {
+    flex-direction: column;
+  }
+
+  .header-logo h1 {
+    font-size: 50px; /* Adjust font size */
+  }
+
+  .discover {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+
+  .discover-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .dish-and-info {
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .img-cont {
+    width: 300px;
+    height: 300px;
+  }
+
+  .dish-card {
+    width: 45%; /* Two cards per row */
+    margin-bottom: 20px;
+  }
+}
+
+/* Large screens (900px and up) */
+@media (min-width: 901px) {
+  .dish-and-info {
+    flex-direction: row;
+  }
+
+  .dish-card {
+    width: 30%; /* Three cards per row */
   }
 }
