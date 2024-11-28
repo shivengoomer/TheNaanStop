@@ -13,7 +13,7 @@ const Recipes = () => {
     const fetchRecipes = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:3001/recipes");
+        const response = await axios.get("https://thenaanstop.onrender.com/recipes");
         setRecipes(response.data);
       } catch (error) {
         console.error('Error fetching recipes:', error);

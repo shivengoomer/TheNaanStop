@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/recipes'; // Adjust based on your server
+const API_URL = 'https://thenaanstop.onrender.com/recipes'; // Adjust based on your server
 
 // Get all recipes
 export const getRecipes = async () => {

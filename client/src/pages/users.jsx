@@ -28,7 +28,7 @@ const User = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/users', userData);
+      const response = await axios.post('https://thenaanstop.onrender.com/users', userData);
       setMessage('User registered successfully');
       console.log(response.data);
       setUserData({ name: '', email: '', password: '', avatar: '' }); // Reset form fields
@@ -43,7 +43,7 @@ const User = () => {
     e.preventDefault();
     try {
       const { email, password } = userData; // Only send email and password
-      const response = await axios.post('http://localhost:3001/users/login', {
+      const response = await axios.post('https://thenaanstop.onrender.com/users/login', {
         email,
         password,
       });
@@ -62,7 +62,7 @@ const User = () => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:3001/users');
+      const response = await axios.get('https://thenaanstop.onrender.com/users');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
