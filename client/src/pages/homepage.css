@@ -386,12 +386,18 @@ button{
   }
 }
 /* Large Screens (1440px and above) */
-@media (min-width: 1440px) {
+@media (min-width: 1440px) and (max-height: 900px) {
   .homepage {
+    display: flex;
     flex-direction: column;
-    padding: 0 50px; /* Add some padding for a spacious layout */
-    height: 100vh;
+    height: 100vh; /* Ensure it takes the full viewport height */
+    overflow: hidden; /* Prevent scrollbars */
+    background-image: url(images/web-bg.png);
+    background-size: cover; /* Make the background cover the entire area */
+    background-repeat: no-repeat; /* Prevent background from repeating */
+    background-position: center; /* Center the background image */
   }
+  
 
   .header {
     padding: 20px 50px; /* Increase padding for a balanced layout */
