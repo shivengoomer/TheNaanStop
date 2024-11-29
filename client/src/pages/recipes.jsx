@@ -82,7 +82,7 @@ const Recipes = () => {
 
       {isLoading ? (
         <div className="loading-animation">
-          <div className="spinner">Loading...</div>
+          <div className="dot-spinner"></div>
         </div>
       ) : (
         <div className="recipes-list">
