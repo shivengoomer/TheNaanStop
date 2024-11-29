@@ -271,6 +271,9 @@ main {
   text-align: center;
   font-family: "Parkinsans",sans-serif;
 }
+button{
+  align-items: center;
+}
 
 /* Optional: Add a hover effect to highlight cards */
 .dish-card:hover {
@@ -380,5 +383,77 @@ main {
   .dish-card {
     width: 45%; /* Two cards per row */
     margin-bottom: 20px;
+  }
+}
+/* Large Screens (1440px and above) */
+@media (min-width: 1440px) {
+  .homepage {
+    flex-direction: column;
+    padding: 0 50px; /* Add some padding for a spacious layout */
+    height: 100vh;
+  }
+
+  .header {
+    padding: 20px 50px; /* Increase padding for a balanced layout */
+    height: auto;
+  }
+
+  .header-logo h1 {
+    font-size: 70px; /* Scale up for large screens */
+  }
+
+  .navbar {
+    gap: 30px; /* Increase spacing between navigation items */
+  }
+
+  .discover {
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    padding: 30px; /* Add more padding for a spacious look */
+    margin-bottom: 50px; /* Increase spacing below */
+  }
+
+  .discover-text h2 {
+    font-size: 32px; /* Scale up headings */
+    margin-bottom: 30px;
+  }
+
+  .discover-list li {
+    font-size: 20px; /* Slightly increase font size for readability */
+  }
+
+  .dish-and-info {
+    width: 90%; /* Keep a wider section for large screens */
+    height: 400px; /* Slightly increase the height */
+    margin: 30px auto; /* Increase spacing around */
+  }
+
+  .img-cont {
+    width: 400px; /* Enlarge circular image container */
+    height: 400px;
+  }
+
+  .info h2 {
+    font-size: 50px; /* Scale up heading size */
+    padding-left: 100px; /* Adjust padding */
+  }
+
+  .info h3 {
+    font-size: 24px; /* Increase size for emphasis */
+    padding-left: 100px; /* Align with heading */
+  }
+
+  .dish-card {
+    width: 300px; /* Maintain a fixed card size */
+    height: 400px; /* Adjust height for balance */
+    margin-bottom: 30px;
+  }
+
+  .dish-card img {
+    height: 250px; /* Increase image height for emphasis */
+  }
+
+  .dish-card p {
+    font-size: 22px; /* Slightly larger text for readability */
   }
 }
