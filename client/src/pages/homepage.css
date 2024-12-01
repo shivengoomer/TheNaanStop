@@ -325,7 +325,6 @@ button{
     width: 250px; /* Reduce size */
     height: 250px;
   }
-
   .info h2 {
     font-size: 24px;
     padding-left: 0;
@@ -337,7 +336,14 @@ button{
     padding-left: 0;
     text-align: center;
   }
-
+  .discover-list li{
+    width: fit-content;
+    text-align: left;
+  }
+  .animation-one{
+    padding: 0;
+    width: auto;
+  }
   .dish-card {
     width: 100%; /* Use full width on smaller screens */
     margin-bottom: 20px;
@@ -347,7 +353,12 @@ button{
     height: 150px; /* Reduce image height */
   }
 }
-
+.nav-link {
+  display: flex;
+  align-items: center;  /* Vertical alignment */
+  justify-content: center;  /* Horizontal alignment */
+  text-align: center;  /* Ensure text alignment */
+}
 /* Tablet screens (601px to 900px wide) */
 @media (min-width: 601px) and (max-width: 900px) {
   .homepage {

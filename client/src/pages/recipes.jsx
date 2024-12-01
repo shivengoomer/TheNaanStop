@@ -81,10 +81,18 @@ const Recipes = () => {
       </div>
 
       {isLoading ? (
-        <div className="loading-animation">
-          <div className="dot-spinner"></div>
-        </div>
-      ) : (
+  <div className="loading-animation">
+    <div className="dot-spinner">
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+      <div className="dot-spinner__dot"></div>
+    </div>
+  </div>):(
         <div className="recipes-list">
           {filteredRecipes.map((recipe) => (
             <div key={recipe._id} className="recipe-card" onClick={() => openRecipeModal(recipe)}>
