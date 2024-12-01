@@ -31,7 +31,7 @@ const User = () => {
       const response = await axios.post('https://thenaanstop.onrender.com/users', userData);
       setMessage('User registered successfully');
       console.log(response.data);
-      setUserData({ name: '', email: '', password: '', avatar: '' }); // Reset form fields
+      setUserData({ name: '', email: '', password: '' }); // Reset form fields
     } catch (error) {
       console.error('Error registering user:', error);
       setMessage('Error registering user. Please try again.');
