@@ -1,4 +1,4 @@
-Deployment Url: https://thenaanstop.netlify.app/
+Deployment Url: [https://thenaanstop.netlify.app/](https://thenaanstop.netlify.app/)
 
 # Getting Started with Create React App
 
@@ -13,7 +13,7 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [https://thenaanstop.onrender.com](https://thenaanstop.onrender.com) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
 
 ### `npm test`
