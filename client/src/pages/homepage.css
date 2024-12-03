@@ -24,9 +24,12 @@ body {
   justify-content: space-between;
   padding: 15px 20px;
   height: auto;
+  font-weight: bolder;
 }
 .header button{
   color: #f7f3f3;
+  opacity: 0;
+  
 }
 
 .header-logo {
@@ -73,6 +76,7 @@ body {
   margin: 0;
   margin-right: 10px;
   background-color: transparent;
+  border: none;
 }
 
 .nav-link {

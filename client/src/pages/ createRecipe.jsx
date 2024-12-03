@@ -56,6 +56,7 @@ const CreateRecipe = () => {
         servings: '',
         difficulty: 'Medium',
         author: '',
+        yt_link:'',
       });
     } catch (error) {
       console.error('Error creating recipe:', error);
@@ -157,6 +158,17 @@ const CreateRecipe = () => {
               <option value="Medium">Medium</option>
               <option value="Hard">Hard</option>
             </select>
+          </div>
+          <div className='ytLink-div'>
+            <label>Youtube Link:</label>
+            <input
+              type="text"
+              name="yt_link"
+              className='yt_link-input'
+              value={recipe.yt_link}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className='author-div'>
             <label>Author:</label>

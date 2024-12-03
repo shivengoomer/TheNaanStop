@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 // @desc    Create a new recipe
 // @access  Public
 router.post('/', async (req, res) => {
-  const { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author } = req.body;
+  const { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author, yt_link } = req.body;
 
   const recipe = new Recipe({
     dishName,
@@ -43,6 +43,7 @@ router.post('/', async (req, res) => {
     servings,
     difficulty,
     author,
+    yt_link, // Added YouTube link
   });
 
   try {
@@ -58,11 +59,11 @@ router.post('/', async (req, res) => {
 // @access  Public
 router.put('/:id', async (req, res) => {
   try {
-    const { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author } = req.body;
+    const { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author, yt_link } = req.body;
 
     const updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
-      { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author }, // Include the image URL
+      { dishName, imageUr, categorie, ingredients, cookingTime, instructions, servings, difficulty, author, yt_link }, // Added YouTube link
       { new: true }
     );
 

@@ -14,15 +14,38 @@ body{
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  position: relative;
  
 }
 
+.overlay-dishname{
+  text-align: center;
+  align-items: center;
+}
 .recipes-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
 
+}
+
+.yt-button-container {
+  position:absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+.yt-button {
+  font-size: 2rem;
+  color: red;
+  cursor: pointer;
+}
+
+.yt-button:hover {
+  /* Remove any hover effect */
+  transform:perspective();
 }
 
 .recipes-list {
@@ -37,7 +60,7 @@ body{
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  width: 300px;
+  width: 350px;
   max-height: 380px; /* Set a maximum height for the recipe card */
   transition: transform 0.3s;
   padding-bottom: 0px;
@@ -82,10 +105,12 @@ body{
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  text-align: center;
 }
 
 /* Modal content styling */
 .modal-content {
+  text-align: left;
   background: #fff;
   padding: 20px;
   border-radius: 10px;

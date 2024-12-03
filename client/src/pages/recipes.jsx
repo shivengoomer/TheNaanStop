@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './recipes.css';
+import { FaYoutube } from 'react-icons/fa'; // Importing YouTube icon
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -81,18 +82,19 @@ const Recipes = () => {
       </div>
 
       {isLoading ? (
-  <div className="loading-animation">
-    <div className="dot-spinner">
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-      <div className="dot-spinner__dot"></div>
-    </div>
-  </div>):(
+        <div className="loading-animation">
+          <div className="dot-spinner">
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+          </div>
+        </div>
+      ) : (
         <div className="recipes-list">
           {filteredRecipes.map((recipe) => (
             <div key={recipe._id} className="recipe-card" onClick={() => openRecipeModal(recipe)}>
@@ -103,6 +105,16 @@ const Recipes = () => {
                 <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
                 <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
                 <p className="recipe-description">{recipe.instructions.slice(0, 100)}...</p>
+                
+                {/* Display YouTube button on card */}
+                {recipe.yt_link && (
+                  <div className="yt-button-container">
+                    <p className='watch-on'>Watch On</p>
+                    <a href={`https://www.youtube.com/watch?v=${recipe.yt_link.split("v=")[1]}`} target="_blank" rel="noopener noreferrer">
+                      <FaYoutube className="yt-button" />
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -113,7 +125,7 @@ const Recipes = () => {
         <div className="modal-overlay" onClick={closeRecipeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={closeRecipeModal}>&times;</button>
-            <h2>{selectedRecipe.dishName}</h2>
+            <h2 className='overlay-dishName'>{selectedRecipe.dishName}</h2>
             <img src={selectedRecipe.imageUr || 'placeholder.jpg'} alt={selectedRecipe.dishName} className="modal-image" />
             <p><strong>Category:</strong> {selectedRecipe.categorie}</p>
             <p><strong>Cooking Time:</strong> {selectedRecipe.cookingTime} minutes</p>
@@ -122,6 +134,21 @@ const Recipes = () => {
             <p><strong>Ingredients:</strong> {selectedRecipe.ingredients.join(', ')}</p>
             <p><strong>Instructions:</strong> {selectedRecipe.instructions}</p>
             <p><strong>Author:</strong> {selectedRecipe.author}</p>
+            
+            {/* Display YouTube video preview in modal if yt_link exists */}
+            {selectedRecipe.yt_link && (
+              <div className="yt-preview-box">
+                <iframe
+                  width="100%"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${selectedRecipe.yt_link.split("v=")[1]}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
           </div>
         </div>
       )}
