@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './recipes.css';
-import { FaYoutube } from 'react-icons/fa'; // Importing YouTube icon
-
+import { useLocation } from 'react-router-dom';
 const Recipes = () => {
+  const location = useLocation();
   const [recipes, setRecipes] = useState([]);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(location.state?.selectedRecipe || null); // Check for pre-selected recipe
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(''); // Search term state
-  const [selectedCategory, setSelectedCategory] = useState(''); // Category filter state
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -40,7 +40,9 @@ const Recipes = () => {
     .filter((recipe) => selectedCategory === '' || recipe.categorie === selectedCategory);
 
   return (
+    
     <div className="recipes-container">
+      
       <h1 className="recipes-title">All Recipes</h1>
 
       {/* Search bar */}
@@ -105,16 +107,6 @@ const Recipes = () => {
                 <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
                 <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
                 <p className="recipe-description">{recipe.instructions.slice(0, 100)}...</p>
-                
-                {/* Display YouTube button on card */}
-                {recipe.yt_link && (
-                  <div className="yt-button-container">
-                    <p className='watch-on'>Watch On</p>
-                    <a href={`https://www.youtube.com/watch?v=${recipe.yt_link.split("v=")[1]}`} target="_blank" rel="noopener noreferrer">
-                      <FaYoutube className="yt-button" />
-                    </a>
-                  </div>
-                )}
               </div>
             </div>
           ))}

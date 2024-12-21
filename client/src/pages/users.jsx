@@ -58,19 +58,6 @@ const User = () => {
     }
   };
 
-  // Fetch all users
-  const fetchUsers = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get('https://thenaanstop.onrender.com/users');
-      setUsers(response.data);
-    } catch (error) {
-      console.error('Error fetching users:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className='background'>
     <div className="user-container">
@@ -107,25 +94,7 @@ const User = () => {
       {message && <p className="message">{message}</p>}
       <p onClick={() => setIsRegister(!isRegister)} className="toggle-form">
         {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
-      </p>
-
-      <h2>Registered Users</h2>
-      <button onClick={fetchUsers}>Fetch Users</button>
-      {loading ? (
-        <p>Loading users...</p>
-      ) : (
-        <ul>
-          {users.map((user) => (
-            <li key={user._id}>
-              <h3>{user.name} ({user.role})</h3>
-              <p>Email: {user.email}</p>
-              <p>Registered on: {new Date(user.date).toLocaleDateString()}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-      
-      
+      </p>  
     </div>
     </div>
   );

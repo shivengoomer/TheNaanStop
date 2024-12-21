@@ -1,7 +1,6 @@
 /* General Styles */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
   background-color: #f7f7f7;
   color: #333;
 }
@@ -40,6 +39,7 @@ body {
 
 .header-logo h1 {
   font-size: 60px;
+  font-weight: 5px;
   margin: 0;
   font-family: "Dancing Script", sans-serif;
   color: white;
@@ -52,7 +52,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200%;
-  animation: shine 3s infinite linear;
+  animation: shine 7s infinite linear;
 }
 
 .logo {
@@ -78,8 +78,13 @@ body {
   background-color: transparent;
   border: none;
 }
-
+li{
+  background: none;
+  border: none;
+}
 .nav-link {
+  font-family: "Ubuntu", serif;
+  font-size: bold;
   text-decoration: none;
   color: white;
   background-color: transparent;

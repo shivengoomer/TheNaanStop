@@ -87,11 +87,18 @@ const dish=
 
 const RecipeDisplay = () => {
   return (
-    <section className='display-recipes'>
-      <div className='container'>
+    <section className="display-recipes">
+      <div className="container">
         {dish.map((recipe, index) => (
-          <div key={index} className='dish-card'>
-            <div className='img-container'>
+          <Link
+            key={index}
+            to={{
+              pathname: '/recipes',
+              state: { selectedRecipe: recipe },
+            }}
+            className="dish-card"
+          >
+            <div className="img-container">
               <img
                 src={recipe.imageUr}
                 alt={recipe.dishName}
@@ -99,7 +106,7 @@ const RecipeDisplay = () => {
             </div>
             <p>{recipe.dishName}</p>
             <p>By {recipe.author}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
